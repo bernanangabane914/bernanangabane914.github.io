@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berna Nangabane — AI Trainer & Wellness Educator</title>
+<style>
+:root{--navy:#2C4A5E;--steel:#3C6478;--deep:#1E3347;--gold:#C49A3C;--gold-lt:#E0C491;--cream:#F5F1E8;--soft:#E8F1F5;--gray:#5A6B73;--white:#FFFFFF;--text:#1E2D38}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:60px;background:rgba(28,51,71,0.95);border-bottom:1px solid rgba(196,154,60,0.25)}
+.nav-logo{font-size:1rem;font-weight:700;color:#fff;letter-spacing:0.03em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.75);transition:color 0.2s;font-family:Arial,sans-serif}
+.nav-links a:hover{color:var(--gold-lt)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:120px 5vw 80px;background:var(--deep)}
+#starfield{position:absolute;inset:0;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:820px;margin:0 auto;text-align:center}
+.hero-eyebrow{display:inline-block;margin-bottom:1.2rem;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,0.4);padding:0.35em 1em;border-radius:99px;font-family:Arial,sans-serif}
+.hero-name{font-size:clamp(2.5rem,7vw,5rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.01em;margin-bottom:1rem}
+.hero-name em{color:var(--gold-lt);font-style:normal}
+.hero-tagline{font-size:clamp(0.95rem,2vw,1.15rem);color:rgba(224,196,145,0.85);font-weight:400;margin-bottom:0.5rem}
+.hero-sub{font-size:0.88rem;color:rgba(255,255,255,0.55);margin-bottom:0.4rem}
+.hero-url{font-size:0.8rem;color:rgba(196,154,60,0.7);margin-bottom:2.5rem;font-family:Arial,sans-serif}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:99px;background:var(--gold);color:var(--deep);font-weight:700;font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;transition:transform 0.18s;box-shadow:0 4px 24px rgba(196,154,60,0.35);font-family:Arial,sans-serif}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:99px;border:1.5px solid rgba(255,255,255,0.35);color:#fff;font-weight:500;font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;transition:border-color 0.18s;font-family:Arial,sans-serif}
+.btn-outline:hover{border-color:var(--gold-lt)}
+
+/* SECTIONS */
+section{padding:90px 5vw}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;font-family:Arial,sans-serif}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1.2rem}
+.section-body{font-size:0.98rem;color:var(--gray);line-height:1.8;max-width:580px}
+.divider{width:48px;height:3px;background:var(--gold);border-radius:2px;margin:0.8rem 0 1.6rem}
+
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:center;margin-top:2.5rem}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.stat-row{display:flex;gap:2rem;margin:1.8rem 0;flex-wrap:wrap}
+.stat-num{font-size:2rem;font-weight:700;color:var(--navy)}
+.stat-label{font-size:0.76rem;color:var(--gray);margin-top:0.2rem;font-family:Arial,sans-serif}
+.pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.4rem}
+.pill{font-size:0.72rem;font-weight:600;padding:0.3em 0.85em;border-radius:99px;background:var(--soft);color:var(--steel);border:1px solid #C9D6DD;font-family:Arial,sans-serif}
+.pill.gold{background:rgba(196,154,60,0.12);color:var(--gold);border-color:rgba(196,154,60,0.3)}
+.about-img{background:linear-gradient(135deg,var(--navy),var(--steel));border-radius:14px;aspect-ratio:4/5;max-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.about-img h3{font-size:1.4rem;color:#fff;margin-bottom:0.3rem}
+.about-img p{font-size:0.78rem;color:var(--gold-lt);font-family:Arial,sans-serif}
+
+/* AI TRAINER */
+#ai-trainer{background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2.5rem}
+.card{background:#fff;border-radius:12px;padding:1.8rem;border:1px solid #E2EBF0;transition:transform 0.2s,box-shadow 0.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,74,94,0.1)}
+.card-icon{font-size:1.4rem;margin-bottom:1rem}
+.card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.card p{font-size:0.86rem;color:var(--gray);line-height:1.7}
+.tools{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:2rem;border-top:1px solid #DDE6EB}
+.tool{display:flex;align-items:center;gap:0.4rem;background:var(--navy);color:#fff;padding:0.45rem 1rem;border-radius:99px;font-size:0.78rem;font-weight:600;font-family:Arial,sans-serif}
+
+/* PRODUCTS */
+#products{background:var(--navy)}
+#products .section-label{color:var(--gold-lt)}
+#products .section-title{color:#fff}
+#products .section-body{color:rgba(255,255,255,0.65);max-width:520px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:2.5rem}
+.product-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;overflow:hidden;transition:transform 0.2s,border-color 0.2s}
+.product-card:hover{transform:translateY(-4px);border-color:rgba(196,154,60,0.5)}
+.product-cover{height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1E3347,#2C4A5E,#3C6478);position:relative;overflow:hidden;padding:1.2rem;text-align:center}
+.product-cover h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.3rem}
+.product-cover p{font-size:0.72rem;color:var(--gold-lt);font-style:italic}
+.product-body{padding:1.2rem}
+.product-body p{font-size:0.84rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:1rem}
+.product-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.8rem}
+.product-price{font-size:1.3rem;font-weight:700;color:var(--gold-lt)}
+.product-price span{font-size:0.72rem;color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-weight:400}
+.buy-main{display:inline-block;background:var(--gold);color:#1E3347;font-weight:700;padding:0.5rem 1.1rem;border-radius:99px;font-size:0.76rem;letter-spacing:0.05em;text-transform:uppercase;font-family:Arial,sans-serif;transition:opacity 0.2s}
+.buy-main:hover{opacity:0.85}
+.platform-links{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.6rem}
+.plt-btn{font-size:0.68rem;font-weight:700;padding:0.28rem 0.7rem;border-radius:99px;font-family:Arial,sans-serif;transition:opacity 0.2s}
+.plt-btn:hover{opacity:0.8}
+.plt-selar{background:#2C4A5E;color:#E0C491}
+.plt-gumroad{background:#FF90E8;color:#1a1a1a}
+.plt-kofi{background:#29ABE0;color:#fff}
+.plt-payhip{background:#F4C430;color:#1a1a1a}
+.guarantee{margin-top:2rem;padding:1.1rem 1.5rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;text-align:center;font-size:0.84rem;color:rgba(255,255,255,0.7);line-height:1.8;font-family:Arial,sans-serif}
+.guarantee a{color:var(--gold-lt)}
+
+/* CREDENTIALS */
+#credentials{background:#fff}
+.cred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.3rem;margin-top:2.5rem}
+.cred-card{padding:1.6rem;border-radius:12px;border:1px solid #E2EBF0;background:var(--soft)}
+.cred-card h3{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-family:Arial,sans-serif}
+.cred-item{display:flex;gap:0.6rem;margin-bottom:0.8rem;align-items:flex-start}
+.cred-dot{width:6px;height:6px;border-radius:50%;background:var(--steel);flex-shrink:0;margin-top:6px}
+.cred-item p{font-size:0.85rem;color:var(--text);line-height:1.5;font-weight:600}
+.cred-item small{font-size:0.76rem;color:var(--gray);font-weight:400;font-family:Arial,sans-serif}
+
+/* SAMPLES */
+#samples{background:var(--cream)}
+.folder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2.5rem}
+.folder{background:#fff;border-radius:12px;border:1px solid #E2EBF0;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+.folder:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,74,94,0.1)}
+.folder-tab{padding:0.9rem 1.2rem;display:flex;align-items:center;gap:0.6rem;background:linear-gradient(to right,var(--soft),#fff)}
+.f-num{font-size:0.62rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:var(--gold);padding:0.2em 0.55em;border-radius:99px;font-family:Arial,sans-serif}
+.folder-tab h3{font-size:0.95rem;font-weight:700;color:var(--navy)}
+.folder-items{padding:0.8rem 1.2rem 1.2rem}
+.doc-item{display:flex;align-items:flex-start;gap:0.6rem;padding:0.5rem 0.3rem;border-bottom:1px solid var(--soft);border-radius:5px;transition:background 0.15s}
+.doc-item:last-child{border-bottom:none}
+.doc-item:hover{background:var(--soft)}
+.doc-icon{width:28px;height:28px;border-radius:5px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;border:1px solid #D8E6EE}
+.doc-info strong{display:block;font-size:0.8rem;color:var(--navy);font-weight:600;line-height:1.3}
+.doc-info small{font-size:0.7rem;color:var(--gray);font-family:Arial,sans-serif}
+.samples-note{margin-top:2rem;padding:1.1rem 1.4rem;background:var(--soft);border-radius:8px;border-left:3px solid var(--gold);font-size:0.83rem;color:var(--gray);line-height:1.7;font-family:Arial,sans-serif}
+.samples-note strong{color:var(--navy)}
+
+/* CONTACT */
+#contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:start;margin-top:2.5rem}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-row{display:flex;align-items:center;gap:0.9rem;padding:0.9rem 0;border-bottom:1px solid #DDE6EB}
+.contact-icon{width:38px;height:38px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-row strong{display:block;font-size:0.72rem;color:var(--gray);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.15rem;font-family:Arial,sans-serif}
+.contact-row a,.contact-row span{font-size:0.9rem;color:var(--navy);font-weight:600}
+.contact-row a:hover{color:var(--steel);text-decoration:underline}
+.contact-cta{background:var(--navy);border-radius:12px;padding:2.2rem;text-align:center}
+.contact-cta h3{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+.contact-cta p{font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:1.6rem;line-height:1.6;font-family:Arial,sans-serif}
+
+/* FOOTER */
+footer{background:var(--deep);text-align:center;padding:2.2rem 5vw;color:rgba(255,255,255,0.3);font-size:0.78rem;font-family:Arial,sans-serif}
+footer span{color:var(--gold)}
+footer a{color:var(--gold-lt)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Berna <span>Nangabane</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#ai-trainer">AI Trainer</a>
+    <a href="#products">Products</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#samples">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="starfield"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Kampala, Uganda &nbsp;·&nbsp; Available Worldwide</div>
+    <h1 class="hero-name">Berna<br><em>Nangabane</em></h1>
+    <p class="hero-tagline">Generative AI Trainer &nbsp;·&nbsp; Research Specialist &nbsp;·&nbsp; Wellness Educator</p>
+    <p class="hero-sub">BSc Human Nutrition & Dietetics &nbsp;·&nbsp; 20 Years Domain Expertise &nbsp;·&nbsp; ChatGPT · Claude · Copilot</p>
+    <p class="hero-url">🌐 bernanangabane914.github.io</p>
+    <div class="hero-ctas">
+      <a href="#ai-trainer" class="btn-primary">View AI Work ↓</a>
+      <a href="#products" class="btn-outline">My Wellness Shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Subject matter expertise meets AI precision</h2>
+        <div class="divider"></div>
+        <p class="section-body">I am a Human Nutrition and Dietetics graduate with nearly two decades of experience in nutrition science, public health programme implementation, and technical documentation. I bring rigorous fact-checking discipline and deep domain knowledge to generative AI training.</p>
+        <div class="stat-row">
+          <div><div class="stat-num">20</div><div class="stat-label">Years Experience</div></div>
+          <div><div class="stat-num">700+</div><div class="stat-label">Schools Reached</div></div>
+          <div><div class="stat-num">200+</div><div class="stat-label">Professionals Trained</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill gold">Generative AI</span>
+          <span class="pill gold">Fact-Checking</span>
+          <span class="pill">Nutrition Science</span>
+          <span class="pill">Public Health</span>
+          <span class="pill">Technical Writing</span>
+          <span class="pill">Programme Management</span>
+        </div>
+      </div>
+      <div class="about-img">
+        <div>
+          <h3>Berna Nangabane</h3>
+          <p>AI Trainer &nbsp;·&nbsp; Wellness Educator<br>Kampala, Uganda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TRAINER -->
+<section id="ai-trainer">
+  <div class="container">
+    <div class="section-label">AI Training</div>
+    <h2 class="section-title">What I bring to AI platforms</h2>
+    <div class="divider"></div>
+    <p class="section-body">I evaluate, fact-check, and improve AI-generated content — especially in health, nutrition, and STEM domains where inaccurate information has real-world consequences.</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🔬</div><h3>Domain Expertise</h3><p>BSc in Human Nutrition & Dietetics with 20 years of professional application. I know when AI health content is accurate, misleading, or dangerously wrong.</p></div>
+      <div class="card"><div class="card-icon">✍️</div><h3>Content Evaluation</h3><p>Trained in evidence-based assessment. I evaluate AI responses for factual accuracy, completeness, clarity, and alignment with scientific consensus.</p></div>
+      <div class="card"><div class="card-icon">📋</div><h3>Technical Documentation</h3><p>Over 15 years producing technical reports, nutrition education materials, and programme documentation for multi-stakeholder audiences.</p></div>
+      <div class="card"><div class="card-icon">🌍</div><h3>Prompt Engineering</h3><p>Hands-on daily experience with ChatGPT, Claude, and Microsoft Copilot in real research and documentation workflows.</p></div>
+    </div>
+    <div class="tools">
+      <div class="tool">⚡ ChatGPT</div>
+      <div class="tool">⚡ Claude (Anthropic)</div>
+      <div class="tool">⚡ Microsoft Copilot</div>
+      <div class="tool">📌 Health & Medicine</div>
+      <div class="tool">📌 Nutrition & Dietetics</div>
+      <div class="tool">📌 General Writing</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-label">Digital Products</div>
+    <h2 class="section-title">Research-backed wellness guides</h2>
+    <div class="divider" style="background:var(--gold-lt)"></div>
+    <p class="section-body">Every product is grounded in nutrition science and designed to be immediately actionable. Instant download. Works on any device.</p>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-cover"><h4>🌙 The 7-Day Sleep Reset</h4><p>A Stress-Free Guide to Falling Asleep Faster</p></div>
+        <div class="product-body">
+          <p>A 7-day step-by-step guide with evening routine, 3 calming technique scripts, day-by-day plan, and bonus printable sleep tracker.</p>
+          <div class="product-meta"><div class="product-price">$12 <span>PDF + EPUB</span></div><a href="https://selar.com/3rd5ng2757" target="_blank" class="buy-main">Buy Now →</a></div>
+          <div class="platform-links">
+            <a href="https://selar.com/3rd5ng2757" target="_blank" class="plt-btn plt-selar">Selar</a>
+            <a href="https://gumroad.com/l/Pjvnn" target="_blank" class="plt-btn plt-gumroad">Gumroad</a>
+            <a href="https://ko-fi.com/s/fb1edfb0e9" target="_blank" class="plt-btn plt-kofi">Ko-fi</a>
+            <a href="https://payhip.com/b/h5tLw" target="_blank" class="plt-btn plt-payhip">Payhip</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><h4>📋 Printable Sleep Tracker</h4><p>7-Day Reset Companion · Print at Home</p></div>
+        <div class="product-body">
+          <p>2-page printable tracker with daily log, nightly wind-down checklist, and weekly reflection. Print at home, use forever.</p>
+          <div class="product-meta"><div class="product-price">$7 <span>Printable PDF</span></div><a href="https://selar.com/223781j3u9" target="_blank" class="buy-main">Buy Now →</a></div>
+          <div class="platform-links">
+            <a href="https://selar.com/223781j3u9" target="_blank" class="plt-btn plt-selar">Selar</a>
+            <a href="https://gumroad.com/l/dbqnxi" target="_blank" class="plt-btn plt-gumroad">Gumroad</a>
+            <a href="https://ko-fi.com/s/7133ce495f" target="_blank" class="plt-btn plt-kofi">Ko-fi</a>
+            <a href="https://payhip.com/b/MaKGZ" target="_blank" class="plt-btn plt-payhip">Payhip</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><h4>✨ Sleep Reset Bundle</h4><p>Ebook + Tracker · Best Value</p></div>
+        <div class="product-body">
+          <p>The complete sleep package — 7-Day Sleep Reset guide PLUS the printable Sleep Tracker. Separately $19, bundled for just $17.</p>
+          <div class="product-meta"><div class="product-price">$17 <span>Save $2</span></div><a href="https://selar.com/s9446311i3" target="_blank" class="buy-main">Buy Now →</a></div>
+          <div class="platform-links">
+            <a href="https://selar.com/s9446311i3" target="_blank" class="plt-btn plt-selar">Selar</a>
+            <a href="https://gumroad.com/l/wzlezl" target="_blank" class="plt-btn plt-gumroad">Gumroad</a>
+            <a href="https://ko-fi.com/s/d637cbe802" target="_blank" class="plt-btn plt-kofi">Ko-fi</a>
+            <a href="https://payhip.com/b/Fv23n" target="_blank" class="plt-btn plt-payhip">Payhip</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><h4>🧘 7-Day Stress Relief Workbook</h4><p>Calm Your Mind · Reclaim Your Peace</p></div>
+        <div class="product-body">
+          <p>18 pages of practical exercises — breathing, grounding, journaling, nutrition for calm, boundary-setting, and personal Stress Relief Toolkit builder.</p>
+          <div class="product-meta"><div class="product-price">$12 <span>PDF + EPUB</span></div><a href="https://selar.com/p187cn79jf" target="_blank" class="buy-main">Buy Now →</a></div>
+          <div class="platform-links">
+            <a href="https://selar.com/p187cn79jf" target="_blank" class="plt-btn plt-selar">Selar</a>
+            <a href="https://gumroad.com/l/hxsow" target="_blank" class="plt-btn plt-gumroad">Gumroad</a>
+            <a href="https://ko-fi.com/s/4e93370c60" target="_blank" class="plt-btn plt-kofi">Ko-fi</a>
+            <a href="https://payhip.com/b/KkaBz" target="_blank" class="plt-btn plt-payhip">Payhip</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" style="border:1.5px solid rgba(196,154,60,0.5)">
+        <div class="product-cover" style="background:linear-gradient(135deg,#1E3347,#2C4A5E,#3C4A6E)"><h4>⭐ Sleep & Stress Ultimate Bundle</h4><p>3 Products · Complete Collection</p></div>
+        <div class="product-body">
+          <p>Everything — Sleep Reset, Sleep Tracker AND Stress Workbook. Total value $31, yours for $25. Save $6.</p>
+          <div style="margin:0.5rem 0;padding:0.45rem 0.7rem;background:rgba(196,154,60,0.12);border-radius:6px;font-size:0.7rem;color:var(--gold-lt);font-family:Arial,sans-serif">✦ Sleep Reset &nbsp;·&nbsp; ✦ Sleep Tracker &nbsp;·&nbsp; ✦ Stress Workbook</div>
+          <div class="product-meta"><div class="product-price">$25 <span>Save $6</span></div><a href="https://selar.com/7uz5cs8941" target="_blank" class="buy-main">Buy Now →</a></div>
+          <div class="platform-links">
+            <a href="https://selar.com/7uz5cs8941" target="_blank" class="plt-btn plt-selar">Selar</a>
+            <a href="https://gumroad.com/l/guead" target="_blank" class="plt-btn plt-gumroad">Gumroad</a>
+            <a href="https://ko-fi.com/s/c644029f28" target="_blank" class="plt-btn plt-kofi">Ko-fi</a>
+            <a href="https://payhip.com/b/Vq1A0" target="_blank" class="plt-btn plt-payhip">Payhip</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="guarantee">
+      🔒 <strong style="color:var(--gold-lt)">100% Money-Back Guarantee</strong> &nbsp;·&nbsp; Instant download after payment &nbsp;·&nbsp; PDF + EPUB formats &nbsp;·&nbsp; Works on any device<br>
+      Questions? <a href="mailto:bernanangabane@gmail.com">bernanangabane@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Education & experience</h2>
+    <div class="divider"></div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <h3>Education</h3>
+        <div class="cred-item"><div class="cred-dot"></div><p>BSc Human Nutrition & Dietetics<br><small>Kyambogo University · 2006</small></p></div>
+      </div>
+      <div class="cred-card">
+        <h3>Experience</h3>
+        <div class="cred-item"><div class="cred-dot"></div><p>AI Research & Documentation Specialist<br><small>Self-Employed · 2025–Present</small></p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>School Milk Programme Officer<br><small>SNV (Under Heritage) · 2022–2025</small></p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>Medical Representative<br><small>Cervoise Uganda & Translink · 2013–2019</small></p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>Nutrition Trainer<br><small>VEDCO Uganda · 2006–2007</small></p></div>
+      </div>
+      <div class="cred-card">
+        <h3>Certifications</h3>
+        <div class="cred-item"><div class="cred-dot"></div><p>Participatory Rural Appraisal</p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>Participatory Impact Assessment</p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>HIV/AIDS Counselling</p></div>
+      </div>
+      <div class="cred-card">
+        <h3>AI Tools</h3>
+        <div class="cred-item"><div class="cred-dot"></div><p>ChatGPT</p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>Claude (Anthropic)</p></div>
+        <div class="cred-item"><div class="cred-dot"></div><p>Microsoft Copilot</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE PROJECTS -->
+<section id="samples">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Sample Projects</h2>
+    <div class="divider"></div>
+    <p class="section-body">A selection of professional documents across four domains demonstrating research quality, technical writing, and evidence-based practice.</p>
+    <div class="folder-grid">
+      <div class="folder">
+        <div class="folder-tab"><span>📊</span><span class="f-num">01</span><h3>Technical Reports</h3></div>
+        <div class="folder-items">
+          <div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><strong>School Milk Programme Impact Assessment</strong><small>Nutritional Status & Programme Reach</small></div></div>
+        </div>
+      </div>
+      <div class="folder">
+        <div class="folder-tab"><span>📘</span><span class="f-num">02</span><h3>Training Manuals</h3></div>
+        <div class="folder-items">
+          <div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><strong>Community Nutrition Training Manual</strong><small>6 modules incl. HIV/AIDS Nutrition Care</small></div></div>
+        </div>
+      </div>
+      <div class="folder">
+        <div class="folder-tab"><span>🏥</span><span class="f-num">03</span><h3>Public Health Briefs</h3></div>
+        <div class="folder-items">
+          <div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><strong>Addressing Micronutrient Deficiency</strong><small>Policy Brief for District Health Officers</small></div></div>
+        </div>
+      </div>
+      <div class="folder">
+        <div class="folder-tab"><span>🌙</span><span class="f-num">04</span><h3>Health & Wellness</h3></div>
+        <div class="folder-items">
+          <div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><strong>Essential Nutrition Messages</strong><small>Evidence-based community health messages</small></div></div>
+          <div class="doc-item"><div class="doc-icon">🌙</div><div class="doc-info"><strong>The 7-Day Sleep Reset</strong><small><a href="https://selar.com/3rd5ng2757" target="_blank" style="color:var(--steel)">Available on Selar →</a></small></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="samples-note"><strong>Note to recruiters & collaborators:</strong> All documents are original professional work. To request any sample, email <a href="mailto:bernanangabane@gmail.com" style="color:var(--navy);font-weight:600">bernanangabane@gmail.com</a></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's work together</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-row"><div class="contact-icon">📧</div><div><strong>Email</strong><a href="mailto:bernanangabane@gmail.com">bernanangabane@gmail.com</a></div></div>
+        <div class="contact-row"><div class="contact-icon">📞</div><div><strong>Phone / WhatsApp</strong><span>+256 785 320 669</span></div></div>
+        <div class="contact-row"><div class="contact-icon">📍</div><div><strong>Location</strong><span>Kampala, Uganda · Remote Worldwide</span></div></div>
+        <div class="contact-row"><div class="contact-icon">🔗</div><div><strong>LinkedIn</strong><a href="https://linkedin.com/in/bernanangabane" target="_blank">linkedin.com/in/bernanangabane</a></div></div>
+        <div class="contact-row"><div class="contact-icon">🌐</div><div><strong>Portfolio</strong><a href="https://bernanangabane914.github.io" target="_blank">bernanangabane914.github.io</a></div></div>
+        <div class="contact-row"><div class="contact-icon">🛒</div><div><strong>Wellness Shop</strong><a href="https://selar.co/bernanangabane" target="_blank">selar.co/bernanangabane</a></div></div>
+      </div>
+      <div class="contact-cta">
+        <h3>Available for AI training projects</h3>
+        <p>Freelance · Contract · Remote<br>Health, Nutrition, Public Health & General Writing domains</p>
+        <a href="mailto:bernanangabane@gmail.com" class="btn-primary">Send Me a Message →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Berna Nangabane</span> · Kampala, Uganda · <a href="https://bernanangabane914.github.io">bernanangabane914.github.io</a> · <a href="mailto:bernanangabane@gmail.com">bernanangabane@gmail.com</a></p>
+</footer>
+
+<script>
+const canvas=document.getElementById('starfield');
+const ctx=canvas.getContext('2d');
+let stars=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=document.getElementById('hero').offsetHeight}
+function initStars(){stars=Array.from({length:100},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height*0.75,r:Math.random()*1.4+0.3,a:Math.random()*0.7+0.3,speed:Math.random()*0.3+0.05,phase:Math.random()*Math.PI*2}))}
+function drawMoon(){const cx=canvas.width*0.82,cy=canvas.height*0.14,r=40;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='#E0C491';ctx.fill();ctx.beginPath();ctx.arc(cx+r*0.55,cy,r,0,Math.PI*2);ctx.fillStyle='#1E3347';ctx.fill()}
+function drawWave(){const y0=canvas.height*0.68;ctx.beginPath();ctx.moveTo(0,y0);for(let x=0;x<=canvas.width;x+=4)ctx.lineTo(x,y0+Math.sin(x/110)*10);ctx.strokeStyle='rgba(196,154,60,0.55)';ctx.lineWidth=1.5;ctx.stroke()}
+let t=0;
+function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);t+=0.008;stars.forEach(s=>{const tw=s.a*(0.6+0.4*Math.sin(t*s.speed+s.phase));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${tw})`;ctx.fill()});drawMoon();drawWave();requestAnimationFrame(draw)}
+resize();initStars();draw();
+window.addEventListener('resize',()=>{resize();initStars()});
+</script>
+</body>
+</html>
